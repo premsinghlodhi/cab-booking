@@ -5,6 +5,7 @@ import { api } from "@shared/routes";
 import { z } from "zod";
 import session from "express-session";
 import MemoryStore from "memorystore";
+import cors from "cors";
 
 const SessionStore = MemoryStore(session);
 
@@ -13,12 +14,20 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   // Simple Session setup
+  
+  app.use(cors({
+  origin: true,
+  credentials: true
+}));
   app.use(session({
     secret: process.env.SESSION_SECRET || "cab-booking-secret",
     resave: false,
     saveUninitialized: false,
     store: new SessionStore({ checkPeriod: 86400000 }),
-    cookie: { secure: app.get("env") === "production" }
+    cookie: {
+  secure: app.get("env") === "production",
+  sameSite: "none"
+}
   }));
 
   // Auth Routes
