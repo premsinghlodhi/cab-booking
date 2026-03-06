@@ -1,0 +1,350 @@
+Develop a full-stack web application that enables users to book cabs, track rides in real time, and make secure online payments. The system must support multiple user roles (User, Driver, Admin) with secure authentication and role-based access control.
+
+The application must be built using the MERN stack:
+
+MongoDB – Database
+
+Express.js – Backend framework
+
+React.js – Frontend framework
+
+Node.js – Server runtime
+
+The system should simulate a real-world ride-booking platform with scalable architecture, secure authentication, and optimized database operations.
+
+1️⃣ Environment & Technology Stack Setup
+Backend:
+
+Node.js (v16+)
+
+Express.js
+
+MongoDB with Mongoose ODM
+
+JWT for authentication
+
+bcryptjs for password hashing
+
+dotenv for environment variables
+
+CORS & Helmet for security
+
+Morgan for logging
+
+Frontend:
+
+React.js (with functional components and hooks)
+
+React Router DOM
+
+Axios for API calls
+
+Bootstrap or Material UI for responsive design
+
+Context API or Redux for state management
+
+Tools:
+
+Git for version control
+
+Postman for API testing
+
+MongoDB Compass for DB management
+
+Environment Variables (.env):
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_secret_key
+CLIENT_URL=http://localhost:3000
+2️⃣ System Architecture
+Backend Architecture (MVC Pattern)
+/models
+/controllers
+/routes
+/middleware
+/config
+/server.js
+Core Modules:
+
+Authentication Module
+
+User Module
+
+Driver Module
+
+Ride Module
+
+Payment Module
+
+Admin Module
+
+3️⃣ Database Design (MongoDB Schema Structure)
+Users Collection
+
+_id
+
+name
+
+email (unique)
+
+password (hashed)
+
+phone
+
+role (user / admin)
+
+createdAt
+
+Drivers Collection
+
+_id
+
+name
+
+email
+
+password (hashed)
+
+vehicleDetails
+
+licenseNumber
+
+availabilityStatus
+
+location (GeoJSON)
+
+role (driver)
+
+verified (boolean)
+
+Rides Collection
+
+_id
+
+userId (ref: User)
+
+driverId (ref: Driver)
+
+pickupLocation
+
+dropLocation
+
+distance
+
+fare
+
+rideStatus (pending, accepted, ongoing, completed, cancelled)
+
+startTime
+
+endTime
+
+Payments Collection
+
+_id
+
+rideId (ref: Ride)
+
+userId
+
+amount
+
+paymentMethod
+
+paymentStatus
+
+transactionId
+
+4️⃣ Core Features & Functional Requirements
+🔐 Authentication & Authorization
+
+User and Driver registration
+
+Secure login using JWT
+
+Password hashing using bcryptjs
+
+Middleware to verify token
+
+Role-based route protection
+
+Admin-only route restrictions
+
+👤 User Features
+
+Register/Login
+
+Search available cabs
+
+Book ride
+
+View fare estimation
+
+Track driver location in real-time
+
+View booking history
+
+Make online payments
+
+Download ride receipt
+
+🚗 Driver Features
+
+Register and upload vehicle details
+
+Accept or reject ride requests
+
+Update ride status
+
+Share real-time location
+
+View ride history
+
+Toggle availability
+
+🛠 Admin Features
+
+Verify drivers
+
+Manage users
+
+Monitor rides
+
+View payment records
+
+Generate reports
+
+5️⃣ Real-Time Functionality
+
+Use:
+
+Socket.io for real-time ride updates
+OR
+
+Firebase real-time database (optional alternative)
+
+Real-time features:
+
+Driver location updates
+
+Ride status changes
+
+Live booking notifications
+
+6️⃣ API Endpoints Structure
+Auth Routes
+POST /api/auth/register
+POST /api/auth/login
+User Routes
+GET /api/users/profile
+GET /api/users/history
+Driver Routes
+POST /api/drivers/verify
+PUT /api/drivers/status
+Ride Routes
+POST /api/rides/book
+PUT /api/rides/update-status
+GET /api/rides/:id
+Payment Routes
+POST /api/payments/create
+GET /api/payments/:rideId
+7️⃣ Frontend Implementation Requirements
+Pages:
+
+Home Page
+
+Login/Register
+
+User Dashboard
+
+Driver Dashboard
+
+Admin Dashboard
+
+Booking Page
+
+Tracking Page
+
+Payment Page
+
+Booking History Page
+
+UI Requirements:
+
+Responsive layout
+
+Navigation bar
+
+Protected routes
+
+Form validation
+
+Toast notifications
+
+Loading indicators
+
+Error handling messages
+
+8️⃣ Security Implementation
+
+JWT authentication middleware
+
+Role-based authorization middleware
+
+Password hashing using bcryptjs
+
+Input validation using express-validator
+
+Secure HTTP headers using Helmet
+
+Rate limiting for login endpoints
+
+CORS configuration
+
+9️⃣ Testing & Validation
+
+Test all CRUD APIs using Postman
+
+Validate authentication flow
+
+Test role restrictions
+
+Verify ride booking workflow
+
+Simulate concurrent ride requests
+
+Validate payment integration
+
+Cross-browser testing
+
+🔟 Performance Optimization
+
+Use indexing in MongoDB (email, location, rideStatus)
+
+Optimize queries with population
+
+Use pagination for ride history
+
+Implement proper error handling middleware
+
+Modular route structure
+
+Scalable controller logic
+
+📈 Expected Learning Outcomes
+
+By completing this project, the developer will:
+
+Build a production-structured MERN application
+
+Implement JWT authentication securely
+
+Design relational logic in NoSQL (MongoDB)
+
+Integrate real-time communication
+
+Develop role-based access control
+
+Deploy a full-stack application
+
+Apply backend optimization techniques
