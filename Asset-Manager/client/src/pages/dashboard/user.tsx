@@ -4,7 +4,7 @@ import { useRides, useBookRide } from "@/hooks/use-rides";
 import { MockMap } from "@/components/mock-map";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Navigation, Clock, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { MapPin, Navigation, Clock, CheckCircle2, AlertCircle, Loader2, Car } from "lucide-react";
 import { format } from "date-fns";
 
 export default function UserDashboard() {
