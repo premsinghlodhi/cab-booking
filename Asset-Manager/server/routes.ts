@@ -16,16 +16,17 @@ export async function registerRoutes(
   // Simple Session setup
   
   app.use(cors({
-  origin: true,
+  origin: ["http://localhost:3000","https://cab-booking-ivory.vercel.app"],
   credentials: true
 }));
+  app.set("trust proxy", 1);
   app.use(session({
     secret: process.env.SESSION_SECRET || "cab-booking-secret",
     resave: false,
     saveUninitialized: false,
     store: new SessionStore({ checkPeriod: 86400000 }),
-    cookie: {
-  secure: app.get("env") === "production",
+  cookie: {
+  secure: true,
   sameSite: "none"
 }
   }));
